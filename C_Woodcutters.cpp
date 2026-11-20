@@ -43,12 +43,38 @@ signed main(){
 
         vi X(n);
         vi H(n);
-
         f(n)
         {
             cin>>X[i];
             cin>>H[i];
         }
-        
+        if(n<=2)
+        {
+            cout<<n<<endl;
+            continue;
+        }
+        int ans = 2;    
+        int L = X[0];
+        for(int i=1;i<n-1;i++)
+        {
+            if(X[i]-H[i]>L)
+            {
+                ans++;
+                L=X[i];
+            }
+            else
+            {
+                if(X[i]+H[i]<X[i+1])
+                {
+                    ans++;
+                    L=X[i]+H[i];
+                }
+                else
+                {
+                    L=X[i];
+                }
+            }
+        }
+        cout<<ans<<endl;
     }
 }
